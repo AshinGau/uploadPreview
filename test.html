@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>uploadPreview</title>
+	<script type="text/javascript" src="../jquery1.11.2.min.js"></script>
+	<script type="text/javascript" src="jquery.uploadPreview.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('.previewInput').uploadPreview({
+				trigger: 'change',
+				onTypeError: function(name) {
+					console.log('type error:', name);
+				},
+				onSuccess: function(img, name) {
+					$(img).css({
+						maxWidth: 300,
+						maxHeight: 300
+					})
+					console.log('success:', name);
+				},
+				onComplete: function(imgs) {
+					console.log('complete:');
+					$('body').append(imgs);
+				}
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<input type="file" multiple="true" class="previewInput" />
+	<input type="file" multiple="true" class="previewInput" />
+</body>
+
+</html>
